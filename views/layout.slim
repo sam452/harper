@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title Harper Solar contact page
+    meta name="keywords" content="Uganda Solar Africa Harper"
+    meta name="author" content="Sam Walton"
+    meta name="description" content="Contact page for Harper Solar"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    link rel="icon" type="image/ico" href="favicon.ico"
+    /This next line adds the routes for css from assetpack
+    == css :cssapp
+  header
+    nav class="navbar navbar-default navbar-fixed-top"
+      div class="container"
+        div class="nav-header"
+          div class="navbar-collapse collapse"
+            button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-ex1-collapse"
+              span class="sr-only"
+              span class="icon-bar"
+              span class="icon-bar"
+              span class="icon-bar"
+            a class="navbar-brand" href="/" contact
+            ul class="nav navbar-nav navbar-right"
+              li
+                a href="/" home
+              li
+                a href="/tech" technologies
+              li
+                a href="/that" that
+  body
+    div class="main"
+      == yield
+      == js :jsapp
+  footer                          

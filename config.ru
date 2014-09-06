@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'sinatra/base'
 Bundler.require
 
 root_dir = File.dirname(__FILE__)

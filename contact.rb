@@ -14,27 +14,28 @@ class UberUrlShortener < Sinatra::Base
   	serve '/js', from: 'app/js'
   	serve '/css', from: 'app/css'
     serve '/image', from: 'app/image'
+	  css :cssapp, [
+	  	'/css/*.css'
+	  ]
+
+	  js :jsapp, [
+	  	'/js/*.js'
+	  ]
+
+	  css_compression :simple
+	  js_compression :jsmin
   end
 
-  css :cssapp, [
-  	'/css/*.css'
-  ]
-
-  js :jsapp, [
-  	'/js/*.js'
-  ]
-
-  css_compression :simple
-  js_compression :jsmin
+	get '/' do
+		slim :index
+	end
+	run! if app_file == $0
 
 end
 
-class Harper < Sinatra::Base
-get '/contact' do
-	erb :contact
-end
+#class Harper < Sinatra::Base
 
 
-run! if app_file == $0
-end
+
+
 
