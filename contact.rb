@@ -26,15 +26,15 @@ class UberUrlShortener < Sinatra::Base
 	  js_compression :jsmin
   end
 
-	get '/' do
-		slim :index
-	end
 	run! if app_file == $0
 
 end
 
-#class Harper < Sinatra::Base
-
+class Harper < Sinatra::Base
+  get '/' do
+    slim :index
+  end
+end
 
 
 
