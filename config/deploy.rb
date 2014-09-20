@@ -9,7 +9,7 @@ set :rack_env, :production
 
 
 set :user, 'root'
-set :domain, 'www.harpersolar.biz'
+set :domain, 'harpersolar.biz'
 set :applicationdir, "/var/www/harper/"
 set :scm, 'git'
 
