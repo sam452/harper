@@ -3,7 +3,7 @@ require 'sinatra/base'
 require 'sinatra/assetpack'
 require 'slim'
 
-class UberUrlShortener < Sinatra::Base
+class Harper < Sinatra::Base
   set :root, File.dirname(__FILE__)
 
   register Sinatra::AssetPack
@@ -26,15 +26,18 @@ class UberUrlShortener < Sinatra::Base
 	  js_compression :jsmin
   end
 
+ get '/' do
+   slim :index 
+ end 
 	run! if app_file == $0
 
 end
 
-class Harper < Sinatra::Base
-  get '/' do
-    slim :index
-  end
-end
+#class Harper < Sinatra::Base
+#  get '/' do
+#    slim :index
+#  end
+#end
 
 
 
