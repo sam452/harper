@@ -1,15 +1,32 @@
-h1 Harper Solar
-
 p Please fill in the following form if you would like to contact us.
-form action="/contact" method="post" role="form"
+form action="/contact" method="post" 
+  javascript:
+    | src="http://www.google.com/recaptcha/api/challenge?k=6LeroPwSAAAAAG42FZ6yMDZATc5e6Gk6Z6XYck0V"
+    script src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js" type="text/javascript" 
+  javascript:
+    | function showRecaptcha(element) {
+      | Recaptcha.create('6LeroPwSAAAAAG42FZ6yMDZATc5e6Gk6Z6XYck0V', element, {theme: 'red', callback: Recaptcha.focus_response_field})
+    | }
+    noscript
+    iframe frameborder="0" height="300" src="http://www.google.com/recaptcha/api/noscript?k=6LeroPwSAAAAAG42FZ6yMDZATc5e6Gk6Z6XYck0V" width="500" 
+    br
+      textarea cols="40" name="recaptcha_challenge_field" rows="3" 
+        preserve:
+          
+                    input name="recaptcha_response_field" type="hidden" value="manual_challenge" 
   label for="name"  Your Name:
   input name="name" type="text" 
-    label for="email"  Your email address:
-    input name="email" type="text" 
-      label for="phone"  Phone contact:
-      input name="phone" type="text" 
-        label for="to"  Your message:
-        input cols="28" name="message" rows="16" type="textarea"
-        
-          input type="submit" value="Send"
-
+    br
+      label for="email"  Your email address:
+      input name="email" type="text" 
+        br
+          label for="phone"  Phone contact:
+          input name="phone" type="text" 
+            br
+              label for="to"  Your message:
+              input cols="28" name="message" rows="16" type="textarea" 
+                br
+                  #recaptcha_div
+                  input onclick="showRecaptcha('recaptcha_div');" type="button" value=("Show reCAPTCHA") 
+                    br
+                      input type="submit" value="Send" 

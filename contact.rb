@@ -2,9 +2,9 @@ require 'rubygems'
 require 'sinatra/base'
 require 'sinatra/assetpack'
 require 'slim'
-require 'sinatra/captcha'
-
-
+require 'json'
+require 'net/http'
+require 'pony'
 
 
 class Harper < Sinatra::Base
@@ -35,14 +35,23 @@ class Harper < Sinatra::Base
   end
 
  get '/contact' do
-   erb :contact
+   
+   slim :contact
  end
 
  post '/contact' do
-   require 'pony'
-   
-   halt(401, "invalid captcha") unless captcha_pass?
-   if captcha_pass?
+   res = Net::HTTP.post_form(
+     URI.parse('http://www.google.com/recaptcha/api/verify'),
+       {
+        'privatekey' => ENV['GOOGLE_RECAPTCHA_PK'],
+        'remoteip' => request.ip,
+        'challenge' => params[:recaptcha_challenge_field],
+        'response' => params[:recaptcha_response_field]
+       }
+    )
+   success, error_key = res.body.lines.map(&:chomp)
+  puts params
+  if success == 'true'
      Pony.mail(
        from: params[:name] + "<" + params[:email] + ">",
        to: 'sam@powerhat.org',
@@ -53,17 +62,18 @@ class Harper < Sinatra::Base
         address:  'smtp.gmail.com',
         port:  '587',
         enable_starttle_auto: true,
-        user_name: ENV['GMAIL_USER'],
+        user_name: ENV['GMAIL_USERNAME'],
         password: ENV['GMAIL_PASSWORD'],
         authentication: :plain,
         domain: 'powerhat.org'
        }
       )
-     redirect '/success'    
+     redirect '/', notice: "Thanks for submitting"   
      else
-      redirect '/index', error: "Something went wrong. Try again"
-   end
- end
+      redirect '/', error: "Something went wrong. Try again"
+    end
+  end
+
 
 	run! if app_file == $0
 
