@@ -1,0 +1,29 @@
+<h1>Harper Solar</h1>
+
+<p>Please fill in the following form if you would like to contact us.</p>
+<form action="/contact" method="post">
+  <label for="name">Your Name:</label>
+  <input type="text" name="name">
+
+  <br>
+  <label for="email">Your email address:</label>
+  <input type="text" name="email">
+
+  <br>
+  <label for="phone">Phone contact:</label>
+  <input type="text" name="phone">
+
+  <br>
+  <label for="to">Your message:</label>
+  <input type="textarea" name="message" rows="16" cols="28">
+
+  <br>
+  <div><%= captcha_image_tag %></div>
+  <br>
+  <label>Captcha:</label>
+  <%= captcha_answer_tag %>
+
+
+  <input type="submit" value="Send">
+</form>
+

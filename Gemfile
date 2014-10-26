@@ -4,6 +4,7 @@ gem 'sinatra', '~>1.4.3', require: 'sinatra/base'
 gem 'sinatra-activerecord', '~> 1.2.3'
 gem 'sinatra-assetpack', '~>0.3.1', require: 'sinatra/assetpack'
 gem 'slim', '~> 2.0.1'
+gem 'sinatra-captcha'
 
 group :development do
 	gem 'thin', '~> 1.5.1'
