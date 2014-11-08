@@ -29,8 +29,9 @@
  #flag {
  	background-image: url('harper_name_350.gif');
  	background-repeat: no-repeat;
- 	height: 165px;
+ 	height: auto;
  	margin-bottom: 10px;
+  padding-top: 190px;
  }
 
  .feature {
@@ -62,4 +63,22 @@
  }
  .greenbox {
  	border:1px solid green;
+ }
+
+ #hero {
+/*  width: 380px;*/
+ /* height: 538px;*/
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-left: 0px;
+ }
+
+ #hero-pic {
+  background-image: url('../image/hero1.png');
+  width: 544px;
+  height: 538px;
+ }
+
+ p.ital {
+  font-style: italic;
  }
