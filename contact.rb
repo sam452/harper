@@ -31,7 +31,7 @@ class Harper < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    slim :index
   end
 
  get '/contact' do
